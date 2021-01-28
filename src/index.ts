@@ -1,4 +1,4 @@
-import simpleGit from 'simple-git';
+import simpleGit from "simple-git";
 /*
 {
   isWorkSpaceEmpty:true,
@@ -9,35 +9,29 @@ import simpleGit from 'simple-git';
 }
 */
 
-interface PublishHelperOption {
-
-}
-
+interface PublishHelperOption {}
 
 class PublishHelper {
-  constructor(option: PublishHelperOption) {
-  }
+  constructor(option: PublishHelperOption) {}
   git = simpleGit();
 
-  isWorkSpaceEmpty() {
-    this.git.status().then((result) => console.log(result)) 
-  } 
-
-  getLastReleaseVersion() {
-
+  async isWorkSpaceEmpty() {
+    return this.git
+      .status()
+      .then(({ not_added, conflicted, created, deleted, modified }) =>
+        [not_added, conflicted, created, deleted, modified].every(
+          (arr) => !arr.length
+        )
+      )
   }
 
-  getLastPreReleaseVersion() {
+  getLastReleaseVersion() {}
 
-  }
+  getLastPreReleaseVersion() {}
 
-  preRelease() {
+  preRelease() {}
 
-  }
-
-  release() {
-
-  }
+  release() {}
 }
 
 export default PublishHelper;

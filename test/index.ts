@@ -2,4 +2,9 @@ import PublishHelper from '../src/index';
 
 const publisher = new PublishHelper({});
 
-publisher.isWorkSpaceEmpty()
+async function isWorkSpaceEmpty () {
+  const isEmpty = await publisher.isWorkSpaceEmpty()
+  console.log(isEmpty)
+}
+
+isWorkSpaceEmpty();
