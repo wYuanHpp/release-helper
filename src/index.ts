@@ -1,3 +1,4 @@
+import simpleGit from 'simple-git';
 /*
 {
   isWorkSpaceEmpty:true,
@@ -15,11 +16,11 @@ interface PublishHelperOption {
 
 class PublishHelper {
   constructor(option: PublishHelperOption) {
-
   }
+  git = simpleGit();
 
   isWorkSpaceEmpty() {
-
+    this.git.status().then((result) => console.log(result)) 
   } 
 
   getLastReleaseVersion() {
@@ -38,3 +39,5 @@ class PublishHelper {
 
   }
 }
+
+export default PublishHelper;
